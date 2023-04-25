@@ -1,0 +1,5 @@
+export const NEXT_QUESTION = 'NEXT_QUESTION';
+export const SELECT_ANSWER = 'SELECT_ANSWER';
+export const UPDATE_SCORE = 'UPDATE_SCORE';
+export const PREV_QUESTION = 'PREV_QUESTION';
+export const RESET_GAME = 'RESET_GAME';
