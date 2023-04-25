@@ -1,0 +1,94 @@
+@import 'colors';
+
+.question {
+  background-color: #fff;
+  padding: 2em;
+  width: 90%;
+  max-width: 360px;
+  margin: 2em auto;
+  border-radius: 8px;
+}
+
+.score {
+  background-color: #fff;
+  padding: 2em;
+  width: 90%;
+  max-width: 360px;
+  margin: 2em auto;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.options-group {
+  list-style: upper-alpha inside;
+}
+
+.option {
+  display: block;
+  margin: 1em 0;
+  border: 1px solid #ccc;
+  padding: 0.8em 1.6em;
+  border-radius: 100px;
+  font-weight: bold;
+  font-size: 0.8em;
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background-color: $blue-primary;
+    color: $white;
+  }
+}
+
+.option.option-selected {
+  background-color: $blue-primary;
+  color: white;
+}
+
+input {
+  display: none;
+}
+
+.btn-group {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5em;
+
+  .btn {
+    display: block;
+    width: 100%;
+    color: #fff;
+    padding: 0.8em;
+    border-radius: 100px;
+    border: 1px solid;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+
+    &__primary {
+      background-color: $blue-primary;
+      border-color: $blue-primary;
+
+      &:hover {
+        background-color: $blue-primary-hover;
+      }
+    }
+    &__secondary {
+      color: $blue-primary;
+      background-color: $white;
+      border-color: $blue-primary;
+
+      &:hover {
+        background-color: $blue-primary-hover;
+        color: $white-secondary;
+      }
+    }
+  }
+}
