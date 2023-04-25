@@ -1,0 +1,25 @@
+@import 'colors';
+
+body {
+  background: linear-gradient(112deg, $blue-primary, $blue-seconday);
+  min-height: 100vh;
+}
+
+.btn {
+  background-color: $blue-primary;
+  color: $white;
+  display: block;
+  width: fit-content;
+  padding: 0.8em 2em;
+  border-radius: 6px;
+  border: 1px solid;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  margin: 0 auto;
+  margin-top: 1em;
+
+  &:hover {
+    background-color: $blue-primary-hover;
+  }
+}
