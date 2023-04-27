@@ -9,8 +9,6 @@ const Option = ({ option, i }) => {
     (item) => item?.question === currentQuestionIndex
   );
 
-  console.log(optionSelected);
-
   const handleAnswerSelect = (answer) => {
     dispatch(selectAnswer(currentQuestionIndex, answer));
     dispatch(updateScore());
