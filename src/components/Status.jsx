@@ -1,5 +1,4 @@
 import { useApp } from '../context/AppContext';
-import { questions } from '../data';
 import '../styles/status.scss';
 
 const Status = () => {
@@ -8,9 +7,13 @@ const Status = () => {
 
   return (
     <div className='status-wrapper'>
-      {questions.map((_, i) => (
-        <div className='status' key={i}>
-          {i + 1}
+      {score.map((s, i) => (
+        <div key={i}>
+          {s !== null ? (
+            <div className='status status__checked'>{i + 1}</div>
+          ) : (
+            <div className='status status__unchecked'>{i + 1}</div>
+          )}
         </div>
       ))}
     </div>

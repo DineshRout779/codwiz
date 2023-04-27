@@ -8,7 +8,6 @@ import {
 } from '../utils/constants';
 
 export const reducers = (state, action) => {
-  // console.log(state);
   switch (action.type) {
     case UPDATE_SCORE:
       const item = state.answers?.find(
@@ -21,7 +20,7 @@ export const reducers = (state, action) => {
       //   state.currentQuestionIndex
       // );
 
-      console.log('item: ', item);
+      // console.log('item: ', item);
 
       let isCorrect =
         item?.answer === questions[state.currentQuestionIndex].answer
@@ -32,10 +31,8 @@ export const reducers = (state, action) => {
         ...state,
         score: state.score.map((s, i) => {
           if (i === state.currentQuestionIndex) {
-            console.log('here', i);
             return isCorrect ? 1 : 0;
           } else {
-            console.log('there', i);
             return s;
           }
         }),
@@ -94,7 +91,7 @@ export const reducers = (state, action) => {
     case RESET_GAME:
       return {
         ...state,
-        score: 0,
+        score: new Array(questions.length).fill(null),
         currentQuestionIndex: 0,
         answers: [],
       };

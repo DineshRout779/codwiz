@@ -1,3 +1,5 @@
+@import 'colors';
+
 .status-wrapper {
   margin: 0 auto;
   display: flex;
@@ -15,4 +17,15 @@
   align-items: center;
   border-radius: 50%;
   color: #fff;
+  font-weight: bold;
+
+  &__checked {
+    background-color: #fff;
+    color: $blue-primary;
+  }
+
+  &__unchecked {
+    background-color: transparent;
+    color: #fff;
+  }
 }

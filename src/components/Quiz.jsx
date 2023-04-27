@@ -8,12 +8,8 @@ function Quiz() {
   const { state } = useApp();
   const { currentQuestionIndex } = state;
 
-  // console.log(state, currentQuestionIndex, questions.length);
-
   return (
-    <div>
-      {currentQuestionIndex < questions.length ? <Question /> : <Score />}
-    </div>
+    <>{currentQuestionIndex < questions.length ? <Question /> : <Score />}</>
   );
 }
 

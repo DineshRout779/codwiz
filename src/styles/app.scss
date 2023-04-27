@@ -2,7 +2,12 @@
 
 body {
   background: linear-gradient(112deg, $blue-primary, $blue-seconday);
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.body-wrapper {
+  height: 80vh;
 }
 
 .btn {
