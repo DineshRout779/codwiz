@@ -3,7 +3,7 @@ import '../styles/navbar.scss';
 const Navbar = () => {
   return (
     <div className='nav'>
-      <h2>Quizy</h2>
+      <h2>Codwiz</h2>
 
       <div className='nav__profile'>
         <h4>Hi, Dinesh</h4>
