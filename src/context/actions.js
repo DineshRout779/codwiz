@@ -1,4 +1,5 @@
 import {
+  GET_QUESTIONS,
   NEXT_QUESTION,
   PREV_QUESTION,
   REMOVE_USER,
@@ -26,6 +27,12 @@ export const setLanguage = (selectedLanguage) => {
   return {
     type: SELECT_LANGUAGE,
     payload: selectedLanguage,
+  };
+};
+
+export const setQuestions = () => {
+  return {
+    type: GET_QUESTIONS,
   };
 };
 

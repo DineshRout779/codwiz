@@ -7,3 +7,4 @@ export const RESET_GAME = 'RESET_GAME';
 export const SELECT_LANGUAGE = 'SELECT_LANGUAGE';
 export const SET_USER = 'SET_USER';
 export const REMOVE_USER = 'REMOVE_USER';
+export const GET_QUESTIONS = 'GET_QUESTIONS';

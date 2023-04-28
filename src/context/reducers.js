@@ -1,5 +1,6 @@
-import { questions } from '../data';
+import { data } from '../data';
 import {
+  GET_QUESTIONS,
   NEXT_QUESTION,
   PREV_QUESTION,
   REMOVE_USER,
@@ -33,6 +34,16 @@ export const reducers = (state, action) => {
         selectedLanguage: action.payload,
       };
 
+    // get questions
+    case GET_QUESTIONS:
+      return {
+        ...state,
+        score: new Array(
+          data[state.selectedLanguage.title.toLowerCase()].length
+        ).fill(null),
+        questions: data[state.selectedLanguage.title.toLowerCase()],
+      };
+
     // update score
     case UPDATE_SCORE:
       const item = state.answers?.find(
@@ -40,7 +51,7 @@ export const reducers = (state, action) => {
       );
 
       let isCorrect =
-        item?.answer === questions[state.currentQuestionIndex].answer
+        item?.answer === state.questions[state.currentQuestionIndex].answer
           ? true
           : false;
 
@@ -112,9 +123,12 @@ export const reducers = (state, action) => {
     case RESET_GAME:
       return {
         ...state,
-        score: new Array(questions.length).fill(null),
+        score: [],
+        questions: [],
         currentQuestionIndex: 0,
         answers: [],
+        user: null,
+        selectedLanguage: null,
       };
 
     default:
