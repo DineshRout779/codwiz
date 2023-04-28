@@ -1,15 +1,13 @@
 import { nextQuestion, prevQuestion } from '../context/actions';
 import { useApp } from '../context/AppContext';
-import { questions } from '../data';
 import Option from './Option';
 
 const Question = () => {
   const { state, dispatch } = useApp();
-  const { currentQuestionIndex } = state;
+  const { currentQuestionIndex, questions } = state;
   const { question, options } = questions[currentQuestionIndex];
 
   const handlePrevQuestion = () => dispatch(prevQuestion());
-
   const handleNextQuestion = () => dispatch(nextQuestion());
 
   return (
@@ -35,4 +33,5 @@ const Question = () => {
     </div>
   );
 };
+
 export default Question;

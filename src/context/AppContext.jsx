@@ -1,9 +1,10 @@
 import { useContext, createContext, useReducer } from 'react';
-import { questions } from '../data';
+import { data } from '../data';
 import { reducers } from './reducers';
 
 const INITIAL_STATE = {
-  score: new Array(questions.length).fill(null),
+  score: [],
+  questions: [],
   currentQuestionIndex: 0,
   answers: [],
   user: null,
