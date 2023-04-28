@@ -12,7 +12,11 @@ const Question = () => {
 
   return (
     <div className='question'>
-      <h3>{currentQuestionIndex + 1 + '. ' + question}</h3>
+      <h3
+        dangerouslySetInnerHTML={{
+          __html: currentQuestionIndex + 1 + '. ' + question,
+        }}
+      ></h3>
       <div className='options-group'>
         {options.map((option, i) => (
           <Option key={i} i={i} option={option} />
