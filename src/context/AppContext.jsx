@@ -6,6 +6,8 @@ const INITIAL_STATE = {
   score: new Array(questions.length).fill(null),
   currentQuestionIndex: 0,
   answers: [],
+  user: null,
+  selectedLanguage: null,
 };
 
 const AppContext = createContext();

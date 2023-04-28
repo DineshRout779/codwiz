@@ -1,10 +1,33 @@
 import {
   NEXT_QUESTION,
   PREV_QUESTION,
+  REMOVE_USER,
   RESET_GAME,
   SELECT_ANSWER,
+  SELECT_LANGUAGE,
+  SET_USER,
   UPDATE_SCORE,
 } from '../utils/constants';
+
+export const setUser = (user) => {
+  return {
+    type: SET_USER,
+    payload: user,
+  };
+};
+
+export const removeUser = () => {
+  return {
+    type: REMOVE_USER,
+  };
+};
+
+export const setLanguage = (selectedLanguage) => {
+  return {
+    type: SELECT_LANGUAGE,
+    payload: selectedLanguage,
+  };
+};
 
 export const selectAnswer = (question, answer) => {
   return {

@@ -2,25 +2,42 @@ import { questions } from '../data';
 import {
   NEXT_QUESTION,
   PREV_QUESTION,
+  REMOVE_USER,
   RESET_GAME,
   SELECT_ANSWER,
+  SELECT_LANGUAGE,
+  SET_USER,
   UPDATE_SCORE,
 } from '../utils/constants';
 
 export const reducers = (state, action) => {
   switch (action.type) {
+    // set user
+    case SET_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+
+    // remove user
+    case REMOVE_USER:
+      return {
+        ...state,
+        user: null,
+      };
+
+    // set language
+    case SELECT_LANGUAGE:
+      return {
+        ...state,
+        selectedLanguage: action.payload,
+      };
+
+    // update score
     case UPDATE_SCORE:
       const item = state.answers?.find(
         (item) => item.question === state.currentQuestionIndex
       );
-      // console.log(
-      //   'ans: ',
-      //   item?.answer,
-      //   questions[state.currentQuestionIndex].answer,
-      //   state.currentQuestionIndex
-      // );
-
-      // console.log('item: ', item);
 
       let isCorrect =
         item?.answer === questions[state.currentQuestionIndex].answer
@@ -38,12 +55,14 @@ export const reducers = (state, action) => {
         }),
       };
 
+    // get next question
     case NEXT_QUESTION:
       return {
         ...state,
         currentQuestionIndex: state.currentQuestionIndex + 1,
       };
 
+    // get previous question
     case PREV_QUESTION:
       if (state.currentQuestionIndex == 0) {
         return {
@@ -57,6 +76,7 @@ export const reducers = (state, action) => {
         };
       }
 
+    // select answer
     case SELECT_ANSWER:
       // if already answered then dont add, just update it
       const isAnswered = state.answers.find(
@@ -88,6 +108,7 @@ export const reducers = (state, action) => {
         };
       }
 
+    // reset game
     case RESET_GAME:
       return {
         ...state,

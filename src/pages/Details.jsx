@@ -1,25 +1,40 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import '../styles/details.scss';
-import icons from '../assets/languages-icons/languages';
+import languages from '../assets/languages-icons/languages';
+import { useApp } from '../context/AppContext';
+import { useRef } from 'react';
+import { removeUser, setLanguage, setUser } from '../context/actions';
 
 const Details = () => {
-  const [user, setUser] = useState('');
-  const [userAdded, setUserAdded] = useState(false);
-  const [error, setError] = useState('');
-  const [language, setLanguage] = useState('');
+  const { state, dispatch } = useApp();
+  const { user, selectedLanguage } = state;
+  const inputRef = useRef(null);
 
-  const selectLanguage = (lang) => setLanguage(lang);
+  const addUser = () => dispatch(setUser(inputRef.current.value));
+  const selectLanguage = (lang) => dispatch(setLanguage(lang));
+  const changeUser = () => dispatch(removeUser());
 
-  const addUser = () => {
-    if (user === '') {
-      setError('Username is required');
-    } else {
-      setUserAdded(true);
-    }
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
   };
 
-  if (user && userAdded) {
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
+  if (user) {
     return (
       <div className='full-screen'>
         <div className='container details details-after'>
@@ -29,29 +44,37 @@ const Details = () => {
             transition={{ duration: 0.3 }}
           >
             <h3>Choose a programming language</h3>
-            <div className='languages-wrapper'>
-              {icons.map((icon, i) => (
+            <motion.div
+              className='languages-wrapper'
+              variants={container}
+              initial='hidden'
+              animate='visible'
+            >
+              {languages.map((lang, i) => (
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   className={
-                    language === icon
+                    selectedLanguage?.title === lang.title
                       ? 'language language__selected'
                       : 'language'
                   }
                   key={'icon-' + i + 1}
-                  onClick={() => selectLanguage(icon)}
+                  onClick={() => selectLanguage(lang)}
+                  variants={item}
                 >
                   <i className='ri-checkbox-circle-fill'></i>
-                  <img src={icon} alt='' />
+                  <img src={lang.src} alt={lang.title} loading='lazy' />
                 </motion.button>
               ))}
-            </div>
+            </motion.div>
 
             <button className='btn btn__link btn__link__alt'>
               Start <i className='ri-arrow-right-line'></i>{' '}
             </button>
 
-            <button className='btn btn__anchor'>Change username</button>
+            <button className='btn btn__anchor' onClick={changeUser}>
+              Change username
+            </button>
           </motion.div>
         </div>
       </div>
@@ -77,11 +100,10 @@ const Details = () => {
             name='name'
             placeholder='i.e. noobmaster'
             className='input'
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
+            ref={inputRef}
           />
 
-          {error && <small>{error}</small>}
+          {/* {error && <small>{error}</small>} */}
 
           <button onClick={addUser} className='btn btn__link btn__link__alt'>
             Next <i className='ri-arrow-right-line'></i>{' '}
