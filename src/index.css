@@ -14,3 +14,9 @@
   max-width: 1080px;
   margin: 0 auto;
 }
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
