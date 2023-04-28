@@ -7,6 +7,7 @@ import 'remixicon/fonts/remixicon.css';
 import Welcome from './pages/Welcome';
 import Quizpage from './pages/Quizpage';
 import Details from './pages/Details';
+import PrivateRoute from './routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -22,8 +23,13 @@ const router = createBrowserRouter([
         element: <Details />,
       },
       {
-        path: 'quiz',
-        element: <Quizpage />,
+        element: <PrivateRoute />,
+        children: [
+          {
+            path: 'quiz',
+            element: <Quizpage />,
+          },
+        ],
       },
     ],
   },
