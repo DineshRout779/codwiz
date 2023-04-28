@@ -10,6 +10,13 @@ body {
   height: 80vh;
 }
 
+.full-screen {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn {
   background-color: $blue-primary;
   color: $white;
@@ -26,5 +33,47 @@ body {
 
   &:hover {
     background-color: $blue-primary-hover;
+  }
+
+  &__link {
+    background-color: #fff;
+    color: $blue-primary;
+    border: none;
+    width: 100%;
+    max-width: 240px;
+    padding: 0.5em;
+    font-size: 1.2em;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+      background-color: #fff;
+      box-shadow: 0 0 20px 0 rgba(221, 224, 227, 0.241);
+    }
+
+    &__alt {
+      background-color: $blue-primary;
+      color: #fff;
+
+      &:hover {
+        background-color: $blue-primary-hover;
+      }
+    }
+  }
+
+  &__anchor {
+    text-decoration: underline;
+    color: $blue-primary;
+    background-color: #fff;
+    border: none;
+    padding: 0.5em;
+    width: fit-content !important;
+    display: block;
+    margin: 0.5em auto !important;
+
+    &:hover {
+      background-color: #fff;
+      border: none;
+    }
   }
 }

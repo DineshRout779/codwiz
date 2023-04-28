@@ -31,7 +31,7 @@ const Option = ({ option, i }) => {
           optionSelected?.answer === i ? 'option option-selected' : 'option'
         }
       >
-        {option}
+        <span>{String.fromCharCode('A'.charCodeAt(0) + i)}. </span> {option}
       </label>
     </>
   );

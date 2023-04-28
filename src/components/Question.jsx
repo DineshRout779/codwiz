@@ -5,7 +5,7 @@ import Option from './Option';
 
 const Question = () => {
   const { state, dispatch } = useApp();
-  const { currentQuestionIndex, answers } = state;
+  const { currentQuestionIndex } = state;
   const { question, options } = questions[currentQuestionIndex];
 
   const handlePrevQuestion = () => dispatch(prevQuestion());

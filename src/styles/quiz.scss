@@ -33,6 +33,7 @@
   font-size: 0.8em;
   cursor: pointer;
   position: relative;
+  background: #ffffff;
 
   &:hover {
     background-color: $blue-primary;
@@ -54,7 +55,7 @@ input {
   gap: 1em;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1.5em;
+  margin-top: 1em;
 
   .btn {
     display: block;
