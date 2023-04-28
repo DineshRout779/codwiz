@@ -19,7 +19,7 @@ const languages = [
   },
   {
     id: 3,
-    title: 'C++',
+    title: 'Cpp',
     src: cpp,
   },
   {
