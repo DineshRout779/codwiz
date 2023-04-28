@@ -1,11 +1,12 @@
 import { resetScore } from '../context/actions';
 import { useApp } from '../context/AppContext';
-import { questions } from '../data';
 import { calculateScore } from '../utils/calculateScore';
 
 const Score = () => {
   const { state, dispatch } = useApp();
-  const { score } = state;
+  const { score, questions } = state;
+
+  console.log('inside score');
 
   const resetGame = () => dispatch(resetScore());
 
@@ -15,10 +16,16 @@ const Score = () => {
       <p>
         Your score is {calculateScore(score)} out of {questions.length}.
       </p>
-      <button onClick={resetGame} className='btn'>
-        Start Again
-      </button>
+      <div className='btn-group'>
+        <button onClick={resetGame} className='btn btn__primary'>
+          Answers
+        </button>
+        <button onClick={resetGame} className='btn btn__secondary'>
+          Exit
+        </button>
+      </div>
     </div>
   );
 };
+
 export default Score;
