@@ -4,6 +4,34 @@ import cpp from './cpp.svg';
 import c from './c.svg';
 import java from './java.svg';
 
-const icons = [js, python, cpp, c, java];
+// const  = [js, python, cpp, c, java];
 
-export default icons;
+const languages = [
+  {
+    id: 1,
+    title: 'JavaScript',
+    src: js,
+  },
+  {
+    id: 2,
+    title: 'Python',
+    src: python,
+  },
+  {
+    id: 3,
+    title: 'C++',
+    src: cpp,
+  },
+  {
+    id: 4,
+    title: 'C',
+    src: c,
+  },
+  {
+    id: 5,
+    title: 'Java',
+    src: java,
+  },
+];
+
+export default languages;
