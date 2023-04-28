@@ -7,12 +7,12 @@ export const data = {
     },
     {
       question:
-        'What will be the output of the following code snippet? <code>print(2**3 + (5 + 6)**(1 + 1))</code>',
+        'What will be the output of the following code snippet? <code lang="python">print(2**3 + (5 + 6)**(1 + 1))</code>',
       options: ['129', '8', '121', 'None of the above'],
       answer: 0,
     },
     {
-      question: `What will be the datatype of the var in the below code snippet? <code>
+      question: `What will be the datatype of the var in the below code snippet? <code lang="python">
         var = 10 <br />
         print(type(var)) <br />
         var = "Hello" <br />
@@ -24,7 +24,9 @@ export const data = {
   ],
   javascript: [
     {
-      question: 'What is the result of the following code: 5 + "5"?',
+      question: `What is the result of the following code? <code lang="javascript">
+      5 + "5"
+    </code>`,
       options: ['0', '1', '10', '55'],
       answer: 3,
     },
@@ -55,4 +57,7 @@ export const data = {
       answer: 3,
     },
   ],
+  cpp: [],
+  c: [],
+  java: [],
 };
