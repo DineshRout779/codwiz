@@ -2,37 +2,68 @@ import { motion } from 'framer-motion';
 import '../styles/details.scss';
 import languages from '../assets/languages-icons/languages';
 import { useApp } from '../context/AppContext';
-import { useRef } from 'react';
-import { removeUser, setLanguage, setUser } from '../context/actions';
+import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import {
+  removeUser,
+  setLanguage,
+  setUser,
+  setQuestions,
+} from '../context/actions';
+import welcome from '../assets/welcome.svg';
+
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
 
 const Details = () => {
-  const { state, dispatch } = useApp();
-  const { user, selectedLanguage } = state;
+  const {
+    state: { user, selectedLanguage },
+    dispatch,
+  } = useApp();
+  const [error, setError] = useState('');
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
-  const addUser = () => dispatch(setUser(inputRef.current.value));
+  const addUser = () => {
+    setError('');
+    if (inputRef.current.value === '') {
+      setError('Username is required!');
+    } else {
+      dispatch(setUser(inputRef.current.value));
+    }
+  };
+
   const selectLanguage = (lang) => dispatch(setLanguage(lang));
   const changeUser = () => dispatch(removeUser());
-
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
+  const pushQuestions = () => {
+    if (!selectedLanguage) {
+      setError('Please select any language');
+    } else {
+      dispatch(setQuestions());
+      navigate('/quiz');
+    }
   };
 
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
+  useEffect(() => {
+    inputRef && inputRef?.current?.focus();
+  }, []);
 
   if (user) {
     return (
@@ -68,7 +99,12 @@ const Details = () => {
               ))}
             </motion.div>
 
-            <button className='btn btn__link btn__link__alt'>
+            {error && <small>{error}</small>}
+
+            <button
+              className='btn btn__link btn__link__alt'
+              onClick={pushQuestions}
+            >
               Start <i className='ri-arrow-right-line'></i>{' '}
             </button>
 
@@ -89,8 +125,10 @@ const Details = () => {
         transition={{ duration: 0.3 }}
         className='full-screen'
       >
-        <div className='container details'>
-          <h2>Enter your name</h2>
+        <div className='container details' style={{ padding: '3em 2em' }}>
+          <img src={welcome} alt='' />
+
+          <h3>Welcome, enter your name</h3>
 
           <span>Note: We don't use your data</span>
 
@@ -98,12 +136,11 @@ const Details = () => {
             type='text'
             id='name'
             name='name'
-            placeholder='i.e. noobmaster'
             className='input'
             ref={inputRef}
           />
 
-          {/* {error && <small>{error}</small>} */}
+          {error && <small>{error}</small>}
 
           <button onClick={addUser} className='btn btn__link btn__link__alt'>
             Next <i className='ri-arrow-right-line'></i>{' '}
