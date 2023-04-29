@@ -61,10 +61,6 @@ const Details = () => {
     }
   };
 
-  useEffect(() => {
-    inputRef && inputRef?.current?.focus();
-  }, []);
-
   if (user) {
     return (
       <div className='full-screen'>
